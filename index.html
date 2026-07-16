@@ -6,6 +6,7 @@
     <title>In Silico PCR Simulator</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <div class="background-elements">
@@ -56,6 +57,17 @@
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                     Run Simulation
                 </button>
+
+                <div class="dna-3d-wrapper hidden" id="dna-3d-wrapper">
+                    <h3>🧬 3D DNA Structure (Target Sequence)</h3>
+                    <div id="dna-3d-container"></div>
+                    <p class="legend">
+                        <span style="color:#ef4444">■ A</span> 
+                        <span style="color:#3b82f6">■ T</span> 
+                        <span style="color:#10b981">■ G</span> 
+                        <span style="color:#eab308">■ C</span>
+                    </p>
+                </div>
             </section>
 
             <section class="result-section glass-panel">
@@ -67,6 +79,16 @@
                 </div>
 
                 <div id="result-content" class="hidden">
+                    <div class="pcr-map-wrapper">
+                        <h3>PCR Amplification Map</h3>
+                        <div id="pcr-map-container" class="pcr-map-container">
+                            <div class="dna-track" id="dna-track"></div>
+                            <div class="amplicon-highlight" id="amplicon-highlight"></div>
+                            <div class="primer-arrow fwd-arrow" id="fwd-arrow">Fwd <span>&rarr;</span></div>
+                            <div class="primer-arrow rev-arrow" id="rev-arrow"><span>&larr;</span> Rev</div>
+                        </div>
+                    </div>
+
                     <div class="stats-grid">
                         <div class="stat-card">
                             <span class="stat-label">Amplicon Length</span>
