@@ -6,7 +6,7 @@
     <title>In Silico PCR Simulator</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
 </head>
 <body>
     <div class="background-elements">
@@ -41,6 +41,12 @@
                     </div>
                     <textarea id="fasta-input" placeholder=">Sequence_Name&#10;ATGC..."></textarea>
                 </div>
+                
+                <div class="input-group">
+                    <label for="pdb-input">PDB ID (Optional - 실제 3D 구조 시각화용)</label>
+                    <input type="text" id="pdb-input" placeholder="e.g. 1BNA (기본값)" maxlength="4" style="text-transform: uppercase;">
+                    <p class="guide-tip" style="margin-top: 4px;">* 비워두면 기본 B-DNA 구조(1BNA)를 사용하여 비율에 맞춰 하이라이트 합니다.</p>
+                </div>
 
                 <div class="primer-inputs">
                     <div class="input-group">
@@ -57,17 +63,6 @@
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                     Run Simulation
                 </button>
-
-                <div class="dna-3d-wrapper hidden" id="dna-3d-wrapper">
-                    <h3>🧬 3D DNA Structure (Target Sequence)</h3>
-                    <div id="dna-3d-container"></div>
-                    <p class="legend">
-                        <span style="color:#ef4444">■ A</span> 
-                        <span style="color:#3b82f6">■ T</span> 
-                        <span style="color:#10b981">■ G</span> 
-                        <span style="color:#eab308">■ C</span>
-                    </p>
-                </div>
             </section>
 
             <section class="result-section glass-panel">
@@ -79,14 +74,12 @@
                 </div>
 
                 <div id="result-content" class="hidden">
-                    <div class="pcr-map-wrapper">
-                        <h3>PCR Amplification Map</h3>
-                        <div id="pcr-map-container" class="pcr-map-container">
-                            <div class="dna-track" id="dna-track"></div>
-                            <div class="amplicon-highlight" id="amplicon-highlight"></div>
-                            <div class="primer-arrow fwd-arrow" id="fwd-arrow">Fwd <span>&rarr;</span></div>
-                            <div class="primer-arrow rev-arrow" id="rev-arrow"><span>&larr;</span> Rev</div>
-                        </div>
+                    <div class="viewer-wrapper">
+                        <h3>🧬 증폭 구간 3D 시각화 (PCR Amplicon Highlight)</h3>
+                        <div id="container-3Dmoljs" class="viewer-box"></div>
+                        <p class="guide-tip" style="text-align:center; margin-top:10px;">
+                            * 전체 DNA 대비 증폭 구간의 <strong style="color:var(--error)">비율(%)</strong>을 계산하여 3D 구조상의 원자들을 <strong style="color:var(--error)">붉은색 구슬(Sphere)</strong>로 줌인/강조합니다.
+                        </p>
                     </div>
 
                     <div class="stats-grid">
