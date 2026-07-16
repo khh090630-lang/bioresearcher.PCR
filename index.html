@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Silico PCR Simulator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>In Silico PCR <span>Simulator</span></h1>
+            <p>분자생물학적 타깃 유전자 증폭 가상 환경</p>
+        </header>
+
+        <main>
+            <section class="input-section glass-panel">
+                <h2>시퀀스 입력</h2>
+                
+                <div class="input-group">
+                    <label for="fasta-input">Target DNA Sequence (FASTA)</label>
+                    <textarea id="fasta-input" placeholder=">Sequence_Name&#10;ATGC..."></textarea>
+                </div>
+
+                <div class="primer-inputs">
+                    <div class="input-group">
+                        <label for="fwd-primer">Forward Primer (5' &rarr; 3')</label>
+                        <input type="text" id="fwd-primer" placeholder="e.g. ATGCGTA">
+                    </div>
+                    <div class="input-group">
+                        <label for="rev-primer">Reverse Primer (5' &rarr; 3')</label>
+                        <input type="text" id="rev-primer" placeholder="e.g. TACGCAT">
+                    </div>
+                </div>
+
+                <button id="run-btn" class="primary-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    Run Simulation
+                </button>
+            </section>
+
+            <section class="result-section glass-panel">
+                <h2>분석 결과</h2>
+                
+                <div id="result-placeholder" class="placeholder-state">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <p>시퀀스와 프라이머를 입력하고 시뮬레이션을 실행하세요.</p>
+                </div>
+
+                <div id="result-content" class="hidden">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-label">Amplicon Length</span>
+                            <span class="stat-value" id="amplicon-length">0 bp</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Forward Position</span>
+                            <span class="stat-value" id="fwd-pos">-</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Reverse Position</span>
+                            <span class="stat-value" id="rev-pos">-</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">GC Content</span>
+                            <span class="stat-value" id="gc-content">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="sequence-viewer">
+                        <h3>Amplicon Sequence</h3>
+                        <div class="sequence-box" id="sequence-display"></div>
+                    </div>
+                </div>
+
+                <div id="error-message" class="error-toast hidden"></div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
