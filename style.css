@@ -130,8 +130,55 @@ main {
     border-bottom: 1px solid var(--panel-border);
 }
 
+.guide-box {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.guide-box h3 {
+    font-size: 1rem;
+    color: #93c5fd;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.guide-box ol {
+    margin-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.guide-box li {
+    margin-bottom: 0.4rem;
+}
+
+.guide-box strong {
+    color: var(--text-primary);
+}
+
+.guide-tip {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
 .input-group {
     margin-bottom: 1.5rem;
+}
+
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
 }
 
 .input-group label {
@@ -139,7 +186,18 @@ main {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-secondary);
-    margin-bottom: 0.5rem;
+}
+
+.external-link {
+    font-size: 0.8rem;
+    color: #93c5fd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.external-link:hover {
+    color: #60a5fa;
+    text-decoration: underline;
 }
 
 textarea, input[type="text"] {
@@ -342,3 +400,110 @@ textarea:focus, input[type="text"]:focus {
 
 .input-section { animation-delay: 0.1s; }
 .result-section { animation-delay: 0.2s; }
+
+/* 3D Visualization Styles */
+.dna-3d-wrapper {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--panel-border);
+    animation: fadeIn 0.5s ease-out;
+}
+
+.dna-3d-wrapper h3 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#dna-3d-container {
+    width: 100%;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+}
+
+#dna-3d-container:active {
+    cursor: grabbing;
+}
+
+.legend {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+}
+
+.legend span {
+    margin: 0 0.5rem;
+}
+
+/* PCR Map Styles */
+.pcr-map-wrapper {
+    margin-bottom: 2rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.pcr-map-wrapper h3 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.pcr-map-container {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.dna-track {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 12px;
+    background: #334155;
+    border-radius: 6px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.amplicon-highlight {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 12px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.primer-arrow {
+    position: absolute;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.fwd-arrow {
+    background: #3b82f6;
+    top: -25px;
+}
+
+.rev-arrow {
+    background: #10b981;
+    bottom: -25px;
+}
