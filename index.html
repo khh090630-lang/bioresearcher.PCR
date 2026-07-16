@@ -23,8 +23,21 @@
             <section class="input-section glass-panel">
                 <h2>시퀀스 입력</h2>
                 
+                <div class="guide-box">
+                    <h3>💡 시뮬레이션 실행 가이드</h3>
+                    <ol>
+                        <li><strong>Target DNA:</strong> 증폭 대상이 되는 전체 DNA 염기서열을 붙여넣습니다. (FASTA 헤더 포함 가능)</li>
+                        <li><strong>Primers:</strong> 타깃을 증폭할 <strong>Forward</strong> 및 <strong>Reverse</strong> 프라이머(5' &rarr; 3' 방향)를 입력합니다.</li>
+                        <li><strong>Run:</strong> 버튼을 눌러 정확히 프라이머가 결합하는 위치와 증폭된 길이(bp)를 확인합니다.</li>
+                    </ol>
+                    <p class="guide-tip">* 화면 상단의 제목(In Silico PCR Simulator)을 <strong>더블 클릭</strong>하면 테스트용 예시 데이터가 자동 입력됩니다.</p>
+                </div>
+
                 <div class="input-group">
-                    <label for="fasta-input">Target DNA Sequence (FASTA)</label>
+                    <div class="input-header">
+                        <label for="fasta-input">Target DNA Sequence (FASTA)</label>
+                        <a href="https://www.ncbi.nlm.nih.gov/nucleotide/" target="_blank" class="external-link" title="미국 국립생물공학정보센터(NCBI)">NCBI GenBank에서 서열 찾기 ↗</a>
+                    </div>
                     <textarea id="fasta-input" placeholder=">Sequence_Name&#10;ATGC..."></textarea>
                 </div>
 
